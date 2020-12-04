@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - node
+before_install:
+  - npm install -g npm@latest
+cache: npm
+install:
+  - npm install jest
+script:
+  - npm test
+
