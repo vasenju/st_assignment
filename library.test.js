@@ -4,6 +4,9 @@ import at from './src/at.js';
 import capitalize from './src/capitalize.js';
 import castArray from './src/castArray.js';
 
+//Patric importit
+import words from './src/words'
+
 describe("Tests for 'add' function", () => {
 
     test('Simple case positive number', () => {
@@ -152,12 +155,56 @@ PATRIC
 
 */
 
-describe("Patric", () => {
-    test('test', () => {
-        expect(add(1, 2)).toBe(3);
-    });
-    test('test', () => {
-        expect(add(1, 2)).toBe(3);
+describe("pkangasmaki", () => {
+    describe("Tests for 'Words' function", () => {
+        test('String with no special symbols', () => {
+            //Single word
+            expect(words('Solo')).toEqual(['Solo']);
+            //Multiple words separated by spaces
+            expect(words('Jest is good for testing')).toEqual(['Jest', 'is', 'good', 'for', 'testing']);
+        });
+        test('String with special symbols', () => {
+            //One special symbol
+            expect(words('Email has @')).toEqual(['Email', 'has']);
+            //Multiple special symbols
+            expect(words('! is not ?')).toEqual(['is', 'not']);
+            //Special symbols mixed with regular symbols
+            expect(words('!s th!s the crusty?')).toEqual(['s', 'th', 's', 'the', 'crusty']);
+        });
+        test('Empty string', () => {
+            //String with empty value
+            expect(words('')).toEqual([]);
+        });
+        test('String with only special symbols', () => {
+            //Test with multiple symbols separated by space
+            expect(words('@@ % * !!')).toEqual([]);
+            //Test with single symbol
+            expect(words('?')).toEqual([]);
+        });
+        test('Array of strings', () => {
+            //expect(words(['Word1', 'Word2', 'Word3'])).toEqual([]);
+            expect(words(['Solo'])).toEqual([]);
+        });
+        test('Array of strings that contain special letters', () => {
+            expect(words(['@', '@=!=', '??'])).toEqual([]);
+            expect(words(['@'])).toEqual([]);
+        });
+
+        //New tests that were not in the documentation:
+        test('Giving an object to the function', () => {
+            const testObject = {
+                name: 'name',
+                username: 'username'
+            };
+            expect(words(testObject)).toEqual([]);
+        });
+
+        test('Giving undefined to the function', () => {
+            expect(words(undefined).toEqual([]));
+        });
+
+        test('Giving null to the function', () => {
+            expect(words(null).toEqual([]));
+        });
     });
 });
-
