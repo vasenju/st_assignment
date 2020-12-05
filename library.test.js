@@ -1,6 +1,8 @@
 import add from './src/add.js';
 import camelCase from './src/camelCase.js';
 import at from './src/at.js';
+import capitalize from './src/capitalize.js';
+import castArray from './src/castArray.js';
 
 describe("Tests for 'add' function", () => {
 
@@ -61,10 +63,85 @@ describe("Tests for 'camelCase' function", () => {
 
 describe("Tests for 'at' function", () => {
 
-    const object = { 'a': [{ 'b': { 'c': 3 } }, 4] }
+    var o1 = {
+        'a': [
+            {
+                'b': {
+                    'c': 3
+                }
+            },
+            4
+        ] 
+    }
     
     test('Simple positive case', () => {
-        expect(at(object, ['a[0].b.c'])).toMatchObject([3]);
+        expect(at(o1, ['a[0].b.c'])).toMatchObject([3]);
     });
 
+    var o2 = {
+        foo: {
+            bar: {
+                value: 41,
+                baz: {
+                    value: 13
+                }
+            }
+        }
+    }
+
+    test('Simple positive case 2', () => {
+        expect(at(o2, ['foo.bar.baz.value'])).toMatchObject([13]);
+    });
+
+    test('Test with multiple paths', () => {
+        expect(at(o2, ['foo.bar.baz.value', 'foo.bar.value'])).toMatchObject([13, 41]);
+    });
+
+    test('Test with incorrect path', () => {
+        expect(at(o2, ['foo.bar.foobar'])).toMatchObject([undefined]);
+    });
+
+    test('Test with incorrect path', () => {
+        expect(at(o2, ['foo...bar.foobar'])).toMatchObject([undefined]);
+    });
 });
+
+
+describe("Tests for 'capitalize' function", () => {
+
+    test('Simple positive case 1', () => {
+        expect(capitalize('foobar')).toBe('Foobar');
+    });
+
+    test('Simple positive case 2', () => {
+        expect(capitalize('fOObaR')).toBe('Foobar');
+    });
+
+    test('Test with empty string', () => {
+        expect(capitalize('')).toBe('');
+    });
+
+    test('Test with special input types 1', () => {
+        expect(capitalize(null)).toBe("Null");
+    });
+
+    test('Test with special input types 2', () => {
+        expect(capitalize({foo: "bar"})).toBe("[object object]");
+    });
+
+    var foo = "bar";
+    test('Test function does not change original value', () => {
+        expect(capitalize(foo)).toBe("Bar");
+        expect(foo).toBe("bar");
+    });
+
+    test('Test with special input types 3', () => {
+        expect(capitalize(123)).toBe("123");
+    });
+});
+
+/*
+describe("Tests for 'castArray' function", () => {
+
+});
+*/
