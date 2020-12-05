@@ -145,3 +145,19 @@ describe("Tests for 'castArray' function", () => {
 
 });
 */
+
+/* 
+
+PATRIC
+
+*/
+
+describe("Patric", () => {
+    test('test', () => {
+        expect(add(1, 2)).toBe(3);
+    });
+    test.only('test', () => {
+        expect(add(1, 2)).toBe(3);
+    });
+});
+
