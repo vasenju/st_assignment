@@ -21,6 +21,6 @@ jobs:
 addons:
   artifacts:
     s3_region: "us-east-1"
-    debug: true
+    debug: false
     paths:
       - ./coverage
