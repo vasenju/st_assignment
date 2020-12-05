@@ -2,6 +2,12 @@
   "scripts": {
     "test": "jest"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/*.js",
+      "!src/.internal/*.js"
+    ]
+  },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.12.1",
     "babel": "^6.23.0",
