@@ -156,7 +156,7 @@ describe("Patric", () => {
     test('test', () => {
         expect(add(1, 2)).toBe(3);
     });
-    test.only('test', () => {
+    test('test', () => {
         expect(add(1, 2)).toBe(3);
     });
 });
