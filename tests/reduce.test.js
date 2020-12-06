@@ -10,6 +10,8 @@ describe("Tests for 'slice' function", () => {
   test('Incorrect collection', () => {
     //Should return string with all the elements
     expect(reduce([1, '2', 2, 'A'], (sum, n) => sum + n, 0)).toBe('122A')
+    expect(reduce(1, (sum, n) => sum + n, 0)).toBe(0)
+    expect(reduce(1, (sum, n) => sum + n, 3)).toBe(3)
   })
   test('Incorrect accumalator', () => {
     //Should return string with 0 1 2

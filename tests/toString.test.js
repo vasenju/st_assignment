@@ -27,12 +27,16 @@ describe("Tests for 'toString' function", () => {
   test('-0 converted to string', () => {
       expect(typeof(toString(-0))).toBe('string')
   })
-  //Null should return empty string - Does not work
-  test.skip('Null converted to string', () => {
-      expect(toString(null)).toEqual('')
+  test('Give symbol', () => {
+    const mySymbol = Symbol()
+    expect(typeof(toString(mySymbol))).toEqual('string')
   })
-  //Undefined should return empty string - Does not work
-  test.skip('Undefined converted to string', () => {
-      expect(toString(undefined)).toEqual('')
+  test('Test null in array', () => {
+    const testArray = ['Hello', null, 'World']
+    expect(typeof(toString(testArray))).toBe('string')
+  })
+  test('Test undefined in array', () => {
+    const testArray = ['Hello', undefined, 'World']
+    expect(typeof(toString(testArray))).toBe('string')
   })
 })

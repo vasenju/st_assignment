@@ -35,6 +35,13 @@ describe("Tests for 'Words' function", () => {
       expect(words(testObject.name)).toEqual(['nimi']);
       expect(words(testObject.username)).toEqual(['kayttaja']);
   });
+  test('Test pattern to find where pattern starts', () => {
+    //Pattern esting starts at 14
+    expect(words('Jest is good testing tool', 'esting').index).toBe(14);
+  });
+  test('Test pattern that does not exit', () => {
+    expect(words('Jest is good testing tool', 'ororo')).toEqual([]);
+  });
 
   //Added new integration tests since words does not accept anything but Strings. Using toString function to make the change.
   describe('Integrating "toString" function into "Words" function', () => {

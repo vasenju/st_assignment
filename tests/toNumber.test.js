@@ -34,4 +34,8 @@ describe("Tests for 'toNumber' function", () => {
   test('Give infinity as a parameter', () => {
     expect(typeof(toNumber(Infinity))).toBe('number')
   })
+  test('Give symbol as a parameter', () => {
+    const mySymbol = Symbol()
+    expect(typeof(toNumber(mySymbol))).toBe('number')
+  })
 })
