@@ -5,5 +5,5 @@ Test library for an open-source JavaScript utility library at https://github.com
 [![Build Status](https://travis-ci.com/vasenju/st_assignment.svg?branch=main)](https://travis-ci.com/vasenju/st_assignment)
 Travis CI test build
 
-[![Coverage Status](https://coveralls.io/repos/github/vasenju/st_assignment/badge.svg)](https://coveralls.io/github/vasenju/st_assignment)
+[![Coverage Status](https://coveralls.io/repos/github/vasenju/st_assignment/badge.svg?branch=main&service=github)](https://coveralls.io/github/vasenju/st_assignment)
 Coveralls status
