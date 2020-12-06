@@ -190,11 +190,11 @@ describe("pkangasmaki", () => {
             expect(typeof(toString(-0))).toBe('string')
         })
         //Null should return empty string
-        test('Null converted to string', () => {
+        test.skip('Null converted to string', () => {
             expect(toString(null)).toEqual('')
         })
         //Undefined should return empty string
-        test('Undefined converted to string', () => {
+        test.skip('Undefined converted to string', () => {
             expect(toString(undefined)).toEqual('')
         })
     })
