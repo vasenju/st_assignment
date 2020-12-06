@@ -186,6 +186,17 @@ describe("pkangasmaki", () => {
             //tests if the type of testObject has changed to string after running through toString function
             expect(typeof(toString(testJSON))).toBe('string')
         })
+        test('-0 converted to string', () => {
+            expect(typeof(toString(-0))).toBe('string')
+        })
+        //Null should return empty string
+        test('Null converted to string', () => {
+            expect(toString(null)).toEqual('')
+        })
+        //Undefined should return empty string
+        test('Undefined converted to string', () => {
+            expect(toString(undefined)).toEqual('')
+        })
     })
     
     describe("Tests for 'forUpperFirst' function", () => {
@@ -228,30 +239,45 @@ describe("pkangasmaki", () => {
             //Test with single symbol
             expect(words('?')).toEqual([]);
         });
-        test.skip('Array of strings', () => {
-            //expect(words(['Word1', 'Word2', 'Word3'])).toEqual([]);
-            expect(words(['Solo'])).toEqual([]);
-        });
-        test.skip('Array of strings that contain special letters', () => {
-            expect(words(['@', '@=!=', '??'])).toEqual([]);
-            expect(words(['@'])).toEqual([]);
-        });
-
-        //New tests that were not in the documentation:
-        test.skip('Giving an object to the function', () => {
+        //New tests
+        test('Giving an object to the function', () => {
             const testObject = {
-                name: 'name',
-                username: 'username'
+                name: 'nimi',
+                username: 'kayttaja'
             };
-            expect(words(testObject)).toEqual([]);
+            expect(words(testObject.name)).toEqual(['nimi']);
+            expect(words(testObject.username)).toEqual(['kayttaja']);
         });
 
-        test.skip('Giving undefined to the function', () => {
-            expect(words(undefined).toEqual([]));
-        });
-
-        test.skip('Giving null to the function', () => {
-            expect(words(null).toEqual([]));
-        });
+        //New tests
+        describe('Integrating "toString" function into "Words" function', () => {
+            test('Array of strings', () => {
+                const testArray = ['Testing','multiple','functions']
+                //Words.js accepts only strings so it must be stringified with 'toString' first
+                const stringified = toString(testArray)
+                //Test if you can pick words from stringified array
+                expect(words(stringified)).toEqual(['Testing','multiple','functions']);
+            });
+            test('Array of strings that contain special letters', () => {
+                const testArray = ['@', '@=!=', '??']
+                //Words.js accepts only strings so it must be stringified with 'toString' first
+                const stringified = toString(testArray)
+                //Test if you can pick words that do not contain special letters from stringified array
+                expect(words(stringified)).toEqual([]);
+                //Test if the functions can pick out words that don't contain special letters
+                expect(words(toString(['hello!"#world', '!!!','hey']))).toEqual(['hello', 'world', 'hey']);
+            });
+            
+            //toString ei toimi oikein
+            test.skip('Giving undefined to the function', () => {
+                console.log(toString(undefined))
+                expect(words(toString(undefined))).toEqual(['']);
+            });
+            
+            //toString ei toimi oikein
+            test.skip('Giving null to the function', () => {
+                expect(words(toString(null))).toEqual(['']);
+            });
+        })
     });
 });
