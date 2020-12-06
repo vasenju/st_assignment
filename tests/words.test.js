@@ -26,7 +26,7 @@ describe("Tests for 'Words' function", () => {
       //Test with single symbol
       expect(words('?')).toEqual([]);
   });
-  //New tests
+  //Added a new test
   test('Giving an object to the function', () => {
       const testObject = {
           name: 'nimi',
@@ -36,7 +36,7 @@ describe("Tests for 'Words' function", () => {
       expect(words(testObject.username)).toEqual(['kayttaja']);
   });
 
-  //New tests
+  //Added new integration tests since words does not accept anything but Strings. Using toString function to make the change.
   describe('Integrating "toString" function into "Words" function', () => {
       test('Array of strings', () => {
           const testArray = ['Testing','multiple','functions']
@@ -55,13 +55,13 @@ describe("Tests for 'Words' function", () => {
           expect(words(toString(['hello!"#world', '!!!','hey']))).toEqual(['hello', 'world', 'hey']);
       });
       
-      //toString ei toimi oikein
+      //toString not working here, can't test
       test.skip('Giving undefined to the function', () => {
           console.log(toString(undefined))
           expect(words(toString(undefined))).toEqual(['']);
       });
       
-      //toString ei toimi oikein
+      //toString not working here, can't test
       test.skip('Giving null to the function', () => {
           expect(words(toString(null))).toEqual(['']);
       });
