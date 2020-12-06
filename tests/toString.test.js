@@ -17,23 +17,21 @@ describe("Tests for 'toString' function", () => {
   })
   test('Array converted to string', () => {
       const testArray = ['Hello', 'World']
-      //tests if the type of testArray has changed to string after running through toString function
       expect(typeof(toString(testArray))).toBe('string')
   })
   test('JSON converted to string', () => {
       const date = new Date();
       const testJSON = date.toJSON();
-      //tests if the type of testObject has changed to string after running through toString function
       expect(typeof(toString(testJSON))).toBe('string')
   })
   test('-0 converted to string', () => {
       expect(typeof(toString(-0))).toBe('string')
   })
-  //Null should return empty string
+  //Null should return empty string - Does not work
   test.skip('Null converted to string', () => {
       expect(toString(null)).toEqual('')
   })
-  //Undefined should return empty string
+  //Undefined should return empty string - Does not work
   test.skip('Undefined converted to string', () => {
       expect(toString(undefined)).toEqual('')
   })
