@@ -16,4 +16,7 @@ describe("Tests for 'isSymbol' function", () => {
   test('Give typed array', () => {
     expect(isSymbol(new Uint8Array)).toBe(false)
   })
+  test('Give object array', () => {
+    expect(isSymbol({hello: 'world'})).toBe(false)
+  })
 })

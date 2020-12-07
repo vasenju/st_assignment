@@ -2,7 +2,7 @@ import toFinite from '../src/toFinite'
 
 //Had to change from original plan since JavaScript does not have as many datatypes as I thought (Mixed up with Java)
 //Using -- isFinite(toFinite(VALUE)) -- to see if the returned value is integer or not.
-describe("Tests for 'toNumber' function", () => {
+describe("Tests for 'toFinite' function", () => {
   test('Give object as a parameter', () => {
     expect(isFinite(toFinite({number: 1}))).toEqual(true)
     expect(isFinite(toFinite({number: 1.1}))).toEqual(true)
